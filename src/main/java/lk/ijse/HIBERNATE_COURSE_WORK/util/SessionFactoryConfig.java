@@ -5,6 +5,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.util;
 */
 
 
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,7 +16,12 @@ public class SessionFactoryConfig {
     private final SessionFactory sessionFactory;
 
     private SessionFactoryConfig() {
-        sessionFactory = new Configuration().mergeProperties(Utility.getProperties()).buildSessionFactory();
+        sessionFactory = new Configuration().mergeProperties(Utility.getProperties())
+                .addAnnotatedClass(Book.class)
+                .addAnnotatedClass(LibraryBranch.class)
+                .addAnnotatedClass(Transaction.class)
+                .addAnnotatedClass(User.class)
+                .buildSessionFactory();
     }
 
     public static SessionFactoryConfig getInstance() {
