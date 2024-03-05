@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="670.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.LoginPageController">
+   <children>
+      <ImageView fitHeight="678.0" fitWidth="1250.0" pickOnBounds="true">
+         <image>
+            <Image url="@../assets/back2.jpg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="705.0" layoutY="216.0" prefHeight="339.0" prefWidth="496.0">
+         <children>
+            <TextField layoutX="114.0" layoutY="67.0" prefHeight="25.0" prefWidth="261.0" />
+         </children>
+      </Pane>
+      <ImageView fitHeight="415.0" fitWidth="479.0" layoutX="13.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/books-.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="322.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" wrappingWidth="335.2999267578125">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
