@@ -1,34 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="670.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.LoginPageController">
+<AnchorPane prefHeight="670.0" prefWidth="1186.0" style="-fx-background-color: #525561;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.LoginPageController">
    <children>
-      <ImageView fitHeight="678.0" fitWidth="1250.0" pickOnBounds="true">
+      <ImageView fitHeight="593.0" fitWidth="1077.0" layoutX="49.0" layoutY="37.0" pickOnBounds="true">
          <image>
-            <Image url="@../assets/back2.jpg" />
+            <Image url="@../assets/Group%204.png" />
          </image>
       </ImageView>
-      <Pane layoutX="705.0" layoutY="216.0" prefHeight="339.0" prefWidth="496.0">
-         <children>
-            <TextField layoutX="114.0" layoutY="67.0" prefHeight="25.0" prefWidth="261.0" />
-         </children>
-      </Pane>
-      <ImageView fitHeight="415.0" fitWidth="479.0" layoutX="13.0" layoutY="289.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/books-.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="322.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WELCOME" wrappingWidth="335.2999267578125">
+      <Text fill="WHITE" layoutX="161.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LOGIN">
          <font>
-            <Font size="45.0" />
+            <Font name="System Bold" size="48.0" />
+         </font>
+      </Text>
+      <Text fill="#1c97f7" layoutX="314.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="." wrappingWidth="109.550537109375">
+         <font>
+            <Font name="System Bold" size="33.0" />
+         </font>
+      </Text>
+      <TextField layoutX="189.0" layoutY="335.0" prefHeight="38.0" prefWidth="305.0" promptText="User Name" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
+      <TextField layoutX="189.0" layoutY="394.0" prefHeight="38.0" prefWidth="305.0" promptText="Password" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
+      <JFXButton layoutX="290.0" layoutY="458.0" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #1D90F5; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE" />
+      <Text fill="#9ca8b7" layoutX="189.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Havent account yet">
+         <font>
+            <Font name="System Bold" size="11.0" />
+         </font>
+      </Text>
+      <Text fill="#1e8ced" layoutX="299.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an account">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="150.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome To Book Woom">
+         <font>
+            <Font name="System Bold" size="27.0" />
          </font>
       </Text>
    </children>
