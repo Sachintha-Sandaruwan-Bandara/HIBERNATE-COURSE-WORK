@@ -4,5 +4,9 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository;
     @created 3/7/2024 - 10:02 PM 
 */
 
-public interface AdminRepository extends CrudRepository{
+
+
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
+
+public interface AdminRepository extends CrudRepository<Admin,Long>{
 }

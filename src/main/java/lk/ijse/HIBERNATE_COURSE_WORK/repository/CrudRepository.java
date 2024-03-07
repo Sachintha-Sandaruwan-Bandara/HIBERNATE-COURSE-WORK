@@ -4,5 +4,16 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository;
     @created 3/7/2024 - 10:07 PM 
 */
 
-public interface CrudRepository extends SuperRepository{
+import java.util.List;
+
+public interface CrudRepository<T,ID> extends SuperRepository{
+    ID save(T object);
+
+    void update(T object);
+
+    T get(ID id);
+
+    void delete(T object);
+
+    List<T>getAll();
 }

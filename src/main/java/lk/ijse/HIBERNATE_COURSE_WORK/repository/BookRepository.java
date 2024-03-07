@@ -4,5 +4,8 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository;
     @created 3/7/2024 - 10:03 PM 
 */
 
-public interface BookRepository extends CrudRepository{
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
+
+public interface BookRepository extends CrudRepository<Book,Long>{
 }
