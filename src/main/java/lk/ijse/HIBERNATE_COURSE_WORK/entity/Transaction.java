@@ -13,39 +13,72 @@ import java.util.Date;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long transactionID;
+    private Long id;
+
+    private Date returnDate;
+    private Date borrowDate;
+    private Date dueDate;
+    private int qty;
+
+
 
     @ManyToOne
-    @JoinColumn(name = "userID")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "bookID")
     private Book book;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date borrowDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date returnDate;
 
     public Transaction() {
     }
 
-    public Transaction(Long transactionID, User user, Book book, Date borrowDate, Date returnDate) {
-        this.transactionID = transactionID;
+    public Transaction(Long id, Date returnDate, Date borrowDate, Date dueDate, int qty, User user, Book book) {
+        this.id = id;
+        this.returnDate = returnDate;
+        this.borrowDate = borrowDate;
+        this.dueDate = dueDate;
+        this.qty = qty;
         this.user = user;
         this.book = book;
-        this.borrowDate = borrowDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
     }
 
-    public Long getTransactionID() {
-        return transactionID;
+    public Date getBorrowDate() {
+        return borrowDate;
     }
 
-    public void setTransactionID(Long transactionID) {
-        this.transactionID = transactionID;
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
     }
 
     public User getUser() {
@@ -64,19 +97,16 @@ public class Transaction {
         this.book = book;
     }
 
-    public Date getBorrowDate() {
-        return borrowDate;
-    }
-
-    public void setBorrowDate(Date borrowDate) {
-        this.borrowDate = borrowDate;
-    }
-
-    public Date getReturnDate() {
-        return returnDate;
-    }
-
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id=" + id +
+                ", returnDate=" + returnDate +
+                ", borrowDate=" + borrowDate +
+                ", dueDate=" + dueDate +
+                ", qty=" + qty +
+                ", user=" + user +
+                ", book=" + book +
+                '}';
     }
 }

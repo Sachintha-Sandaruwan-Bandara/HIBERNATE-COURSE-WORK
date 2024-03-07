@@ -11,32 +11,47 @@ import java.util.List;
 @Entity
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long bookID;
+    private Long id;
 
     private String title;
     private String author;
-    private String genre;
-    private boolean availabilityStatus;
+    private String gener;
+
+    private int qty;
+
+
+    @ManyToOne
+    private Admin admin;
+
+    @ManyToOne
+    private LibraryBranch libraryBranch;
+
+    @OneToMany(mappedBy = "book")
+    private List<Transaction> transactions;
 
     public Book() {
     }
 
-    public Book(Long bookID, String title, String author, String genre, boolean availabilityStatus) {
-        this.bookID = bookID;
+    public Book(Long id, String title, String author, String gener, int qty, Admin admin, LibraryBranch libraryBranch, List<Transaction> transactions) {
+        this.id = id;
         this.title = title;
         this.author = author;
-        this.genre = genre;
-        this.availabilityStatus = availabilityStatus;
+        this.gener = gener;
+        this.qty = qty;
+        this.admin = admin;
+        this.libraryBranch = libraryBranch;
+        this.transactions = transactions;
     }
 
-    public Long getBookID() {
-        return bookID;
+    public Long getId() {
+        return id;
     }
 
-    public void setBookID(Long bookID) {
-        this.bookID = bookID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -55,19 +70,57 @@ public class Book {
         this.author = author;
     }
 
-    public String getGenre() {
-        return genre;
+    public String getGener() {
+        return gener;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGener(String gener) {
+        this.gener = gener;
     }
 
-    public boolean isAvailabilityStatus() {
-        return availabilityStatus;
+    public int getQty() {
+        return qty;
     }
 
-    public void setAvailabilityStatus(boolean availabilityStatus) {
-        this.availabilityStatus = availabilityStatus;
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public LibraryBranch getLibraryBranch() {
+        return libraryBranch;
+    }
+
+    public void setLibraryBranch(LibraryBranch libraryBranch) {
+        this.libraryBranch = libraryBranch;
+    }
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", gener='" + gener + '\'' +
+                ", qty=" + qty +
+                ", admin=" + admin +
+                ", libraryBranch=" + libraryBranch +
+                ", transactions=" + transactions +
+                '}';
     }
 }

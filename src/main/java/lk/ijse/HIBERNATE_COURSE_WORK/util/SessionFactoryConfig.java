@@ -21,6 +21,7 @@ public class SessionFactoryConfig {
                 .addAnnotatedClass(LibraryBranch.class)
                 .addAnnotatedClass(Transaction.class)
                 .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Admin.class)
                 .buildSessionFactory();
     }
 

@@ -10,12 +10,12 @@ import org.hibernate.Transaction;
 
 public class LauncherWrapper {
     public static void main(String[] args) {
-        Launcher.main(args);
+//        Launcher.main(args);
 
-//        Session session = SessionFactoryConfig.getInstance().getSession();
-//        Transaction transaction = session.beginTransaction();
-//
-//        transaction.commit();
-//        session.close();
+        Session session = SessionFactoryConfig.getInstance().getSession();
+        Transaction transaction = session.beginTransaction();
+
+        transaction.commit();
+        session.close();
     }
 }

@@ -1,7 +1,6 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -12,35 +11,52 @@ import java.util.List;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userID;
-    private String name;
-    private String email;
+    private Long id;
+
+    private String username;
     private String password;
+    private String email;
+
+    @OneToMany(mappedBy = "user")
+    private List<Transaction> transactions;
+
+    @ManyToOne
+    private Admin admin;
 
     public User() {
     }
 
-    public User(Long userID, String name, String email, String password) {
-        this.userID = userID;
-        this.name = name;
-        this.email = email;
+    public User(Long id, String username, String password, String email, List<Transaction> transactions, Admin admin) {
+        this.id = id;
+        this.username = username;
         this.password = password;
+        this.email = email;
+        this.transactions = transactions;
+        this.admin = admin;
     }
 
-    public Long getUserID() {
-        return userID;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -51,11 +67,31 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public List<Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", transactions=" + transactions +
+                ", admin=" + admin +
+                '}';
     }
 }
