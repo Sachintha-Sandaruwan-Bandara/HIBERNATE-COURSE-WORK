@@ -1,11 +1,13 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.TransactionDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -24,15 +26,25 @@ public class User {
     private String username;
     private String password;
     private String email;
-
+    @ManyToOne
+    private Admin admin;
     @OneToMany(mappedBy = "user")
     private List<Transaction> transactions;
 
-    @ManyToOne
-    private Admin admin;
+
 
     public UserDTO toDTO(){
         UserDTO userDTO = new UserDTO();
+        userDTO.setId(this.id);
+        userDTO.setUsername(this.username);
+        userDTO.setPassword(this.password);
+        userDTO.setEmail(this.email);
+        userDTO.setAdmin(this.admin.toDTO());
+        List<TransactionDTO>transactionList=new ArrayList<>();
+        for (Transaction transaction:transactions) {
+            transactionList.add(transaction.toDTO());
+        }
+        userDTO.setTransactions(transactionList);
 
         return userDTO;
     }
