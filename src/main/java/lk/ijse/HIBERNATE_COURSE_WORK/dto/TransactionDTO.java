@@ -33,6 +33,8 @@ public class TransactionDTO {
         transaction.setBorrowDate(this.borrowDate);
         transaction.setDueDate(this.dueDate);
         transaction.setQty(this.qty);
+        transaction.setUser(this.user.toEntity());
+        transaction.setBook(this.book.toEntity());
         return transaction;
     }
 }
