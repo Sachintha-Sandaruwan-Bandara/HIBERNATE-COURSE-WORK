@@ -5,11 +5,16 @@ package lk.ijse.HIBERNATE_COURSE_WORK.dto;
 */
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.LibraryBranch;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -26,7 +31,28 @@ public class AdminDTO {
         admin.setId(this.getId());
         admin.setUsername(this.getUsername());
         admin.setPassword(this.getPassword());
-        // You can add mapping for other properties here
+
+//        dto lists convert to entity lists
+        List<Book> bookList = new ArrayList<>();
+        for (BookDTO bookDTO : this.books) {
+            bookList.add(bookDTO.toEntity());
+        }
+        admin.setBooks(bookList);
+
+        List<LibraryBranch> libraryBranchList = new ArrayList<>();
+
+        for (LibraryBranchDTO libraryBranchDTO : this.libraryBranches) {
+            libraryBranchList.add(libraryBranchDTO.toEntity());
+        }
+
+        admin.setLibraryBranches(libraryBranchList);
+
+        List<User> userList = new ArrayList<>();
+        for (UserDTO userDto : this.users) {
+            userList.add(userDto.toEntity());
+        }
+        admin.setUsers(userList);
+
         return admin;
     }
 

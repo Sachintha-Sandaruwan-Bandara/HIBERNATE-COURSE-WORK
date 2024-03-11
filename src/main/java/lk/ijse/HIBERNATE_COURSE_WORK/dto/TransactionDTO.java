@@ -7,6 +7,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.dto;
 
 
 
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,14 @@ public class TransactionDTO {
     private int qty;
     private UserDTO user;
     private BookDTO book;
+
+    public Transaction toEntity(){
+        Transaction transaction = new Transaction();
+        transaction.setId(this.id);
+        transaction.setReturnDate(this.returnDate);
+        transaction.setBorrowDate(this.borrowDate);
+        transaction.setDueDate(this.dueDate);
+        transaction.setQty(this.qty);
+        return transaction;
+    }
 }

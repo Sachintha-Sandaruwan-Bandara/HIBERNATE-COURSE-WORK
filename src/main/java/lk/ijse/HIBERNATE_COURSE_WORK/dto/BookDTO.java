@@ -5,19 +5,17 @@ package lk.ijse.HIBERNATE_COURSE_WORK.dto;
 */
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
-import lk.ijse.HIBERNATE_COURSE_WORK.entity.LibraryBranch;
-import lk.ijse.HIBERNATE_COURSE_WORK.entity.Transaction;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class BookDTO{
+public class BookDTO {
     private Long id;
 
     private String title;
@@ -27,4 +25,19 @@ public class BookDTO{
     private Admin admin;
     private LibraryBranchDTO libraryBranch;
     private List<TransactionDTO> transactions;
+
+    public Book toEntity() {
+        Book book = new Book();
+        book.setId(this.id);
+        book.setTitle(this.title);
+        book.setAuthor(this.author);
+        book.setGener(this.gener);
+        book.setQty(this.qty);
+        book.setAdmin(this.admin);
+        return book;
+
+
+    }
+
+
 }
