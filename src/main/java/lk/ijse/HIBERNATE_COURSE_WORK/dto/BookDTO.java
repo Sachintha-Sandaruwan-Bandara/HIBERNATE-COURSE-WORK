@@ -6,10 +6,13 @@ package lk.ijse.HIBERNATE_COURSE_WORK.dto;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.LibraryBranch;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Transaction;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor
@@ -34,6 +37,12 @@ public class BookDTO {
         book.setGener(this.gener);
         book.setQty(this.qty);
         book.setAdmin(this.admin);
+        book.setLibraryBranch(this.libraryBranch.toEntity());
+        List<Transaction>transactionList=new ArrayList<>();
+        for (TransactionDTO transactionDto:this.transactions) {
+            transactionList.add(transactionDto.toEntity());
+        }
+        book.setTransactions(transactionList);
         return book;
 
 
