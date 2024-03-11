@@ -1,5 +1,6 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +30,12 @@ public class User {
 
     @ManyToOne
     private Admin admin;
+
+    public UserDTO toDTO(){
+        UserDTO userDTO = new UserDTO();
+
+        return userDTO;
+    }
 
 
 }

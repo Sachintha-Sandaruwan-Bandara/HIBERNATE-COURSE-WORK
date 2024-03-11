@@ -1,11 +1,16 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.LibraryBranchDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bridj.cpp.mfc.CString;
+
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -34,5 +39,32 @@ public class Admin {
 
     @OneToMany(mappedBy = "admin")
     private List<User> users;
+
+    public AdminDTO toDTO(){
+        AdminDTO adminDTO = new AdminDTO();
+        adminDTO.setId(this.id);
+        adminDTO.setUsername(this.username);
+        adminDTO.setPassword(this.password);
+        List<BookDTO>bookDTOS=new ArrayList<>();
+        for (Book book:this.books) {
+            bookDTOS.add(book.toDTO());
+        }
+        adminDTO.setBooks(bookDTOS);
+
+        List<LibraryBranchDTO>libraryBranchDTOS=new ArrayList<>();
+        for (LibraryBranch libraryBranch:this.libraryBranches) {
+            libraryBranchDTOS.add(libraryBranch.toDTO());
+        }
+        adminDTO.setLibraryBranches(libraryBranchDTOS);
+
+
+        List<UserDTO>userDTOS=new ArrayList<>();
+        for (User user:this.users) {
+            userDTOS.add(user.toDTO());
+        }
+        adminDTO.setUsers(userDTOS);
+
+        return adminDTO;
+    }
 
 }

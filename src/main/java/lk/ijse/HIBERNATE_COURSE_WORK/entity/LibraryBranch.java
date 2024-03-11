@@ -1,5 +1,6 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.LibraryBranchDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,5 +32,10 @@ public class LibraryBranch {
     @ManyToOne
     private Admin admin;
 
+    public LibraryBranchDTO toDTO(){
+        LibraryBranchDTO libraryBranchDTO = new LibraryBranchDTO();
+
+        return libraryBranchDTO;
+    }
 }
 

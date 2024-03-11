@@ -4,6 +4,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.entity;
     @created 3/1/2024 - 9:31 PM 
 */
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.TransactionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,5 +35,10 @@ public class Transaction {
     @ManyToOne
     private Book book;
 
+    public TransactionDTO toDTO(){
+        TransactionDTO transactionDTO = new TransactionDTO();
+
+        return transactionDTO;
+    }
 
 }
