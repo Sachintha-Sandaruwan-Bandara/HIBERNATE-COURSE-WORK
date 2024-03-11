@@ -6,10 +6,23 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.AdminRepository;
+import org.hibernate.Session;
 
 import java.util.List;
 
 public class AdminRepositoryImpl implements AdminRepository {
+
+private Session session;
+private static AdminRepositoryImpl adminRepositoryImpl;
+
+private AdminRepositoryImpl(){
+
+}
+public static AdminRepositoryImpl getInstance(){
+    return null==adminRepositoryImpl
+            ?adminRepositoryImpl=new AdminRepositoryImpl()
+            :adminRepositoryImpl;
+}
 
     @Override
     public Long save(Admin object) {

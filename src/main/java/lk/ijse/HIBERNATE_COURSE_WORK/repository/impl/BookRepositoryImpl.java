@@ -6,10 +6,20 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.BookRepository;
+import org.hibernate.Session;
 
 import java.util.List;
 
 public class BookRepositoryImpl implements BookRepository {
+    private Session session;
+    private static BookRepositoryImpl bookRepositoryImpl;
+    private BookRepositoryImpl(){}
+
+    public static BookRepositoryImpl getInstance(){
+        return null==bookRepositoryImpl
+                ?bookRepositoryImpl=new BookRepositoryImpl()
+                :bookRepositoryImpl;
+    }
 
     @Override
     public Long save(Book object) {

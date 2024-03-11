@@ -6,10 +6,21 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.LibraryBranch;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.LibraryBranchRepository;
+import org.hibernate.Session;
 
 import java.util.List;
 
-public class LibraryBranceRepositoryImpl implements LibraryBranchRepository {
+public class LibraryBranchRepositoryImpl implements LibraryBranchRepository {
+private Session session;
+private static LibraryBranchRepositoryImpl libraryBranchRepositoryImpl;
+private LibraryBranchRepositoryImpl(){}
+
+public static LibraryBranchRepositoryImpl getInstance(){
+    return null==libraryBranchRepositoryImpl
+            ?libraryBranchRepositoryImpl=new LibraryBranchRepositoryImpl()
+            :libraryBranchRepositoryImpl;
+
+}
 
     @Override
     public Long save(LibraryBranch object) {

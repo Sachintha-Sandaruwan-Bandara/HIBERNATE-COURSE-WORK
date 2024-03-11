@@ -6,10 +6,21 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.UserRepository;
+import org.hibernate.Session;
 
 import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
+    private Session session;
+    private static UserRepositoryImpl userRepositoryImpl;
+
+    private UserRepositoryImpl(){}
+
+    public static UserRepositoryImpl getInstance(){
+        return null==userRepositoryImpl
+                ?userRepositoryImpl=new UserRepositoryImpl()
+                :userRepositoryImpl;
+    }
 
     @Override
     public Long save(User object) {
