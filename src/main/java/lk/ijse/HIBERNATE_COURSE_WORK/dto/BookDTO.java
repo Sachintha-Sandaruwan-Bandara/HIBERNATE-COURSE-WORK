@@ -36,13 +36,19 @@ public class BookDTO {
         book.setAuthor(this.author);
         book.setGener(this.gener);
         book.setQty(this.qty);
-        book.setAdmin(this.admin.toEntity());
-        book.setLibraryBranch(this.libraryBranch.toEntity());
-        List<Transaction>transactionList=new ArrayList<>();
-        for (TransactionDTO transactionDto:this.transactions) {
-            transactionList.add(transactionDto.toEntity());
+        if (this.admin!=null) {
+            book.setAdmin(this.admin.toEntity());
         }
-        book.setTransactions(transactionList);
+        if (this.libraryBranch!=null) {
+            book.setLibraryBranch(this.libraryBranch.toEntity());
+        }
+        if (this.transactions!=null) {
+            List<Transaction> transactionList = new ArrayList<>();
+            for (TransactionDTO transactionDto : this.transactions) {
+                transactionList.add(transactionDto.toEntity());
+            }
+            book.setTransactions(transactionList);
+        }
         return book;
 
 

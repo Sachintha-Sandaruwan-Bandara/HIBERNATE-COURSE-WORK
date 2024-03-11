@@ -7,6 +7,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.LibraryBranch;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.LibraryBranchRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -21,29 +22,40 @@ public static LibraryBranchRepositoryImpl getInstance(){
             :libraryBranchRepositoryImpl;
 
 }
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
 
     @Override
     public Long save(LibraryBranch object) {
-        return null;
+        return (Long) session.save(object);
     }
 
     @Override
     public void update(LibraryBranch object) {
-
+        session.update(object);
     }
 
     @Override
     public LibraryBranch get(Long aLong) {
-        return null;
+        return session.get(LibraryBranch.class, aLong);
     }
 
     @Override
     public void delete(LibraryBranch object) {
-
+        session.delete(object);
     }
 
     @Override
     public List<LibraryBranch> getAll() {
-        return null;
+        String sqlQuery = "FROM LibraryBranch ";
+        Query query = session.createQuery(sqlQuery);
+        List list = query.list();
+
+        session.close();
+        return list;
     }
+
+
 }

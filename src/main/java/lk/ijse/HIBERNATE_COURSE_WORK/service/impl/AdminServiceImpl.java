@@ -8,7 +8,9 @@ import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.AdminRepository;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.impl.AdminRepositoryImpl;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.AdminService;
+import lk.ijse.HIBERNATE_COURSE_WORK.util.SessionFactoryConfig;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import java.util.List;
 
@@ -29,7 +31,21 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Long saveAdmin(AdminDTO adminDTO) {
-        return null;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            adminRepository.setSession(session);
+            Long id = adminRepository.save(adminDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return id;
+        } catch (Exception ex) {
+            transaction.rollback();
+            session.close();
+            ex.printStackTrace();
+            return -1L;
+        }
     }
 
     @Override

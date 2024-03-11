@@ -34,12 +34,16 @@ public class LibraryBranchDTO {
         libraryBranch.setId(this.id);
         libraryBranch.setName(this.name);
         libraryBranch.setLocation(this.location);
-        libraryBranch.setAdmin(this.admin.toEntity());
-        List<Book> bookList = new ArrayList<>();
-        for (BookDTO bookDto : this.books) {
-            bookList.add(bookDto.toEntity());
+        if (this.admin!=null) {
+            libraryBranch.setAdmin(this.admin.toEntity());
         }
-        libraryBranch.setBooks(bookList);
+        if (this.books!=null) {
+            List<Book> bookList = new ArrayList<>();
+            for (BookDTO bookDto : this.books) {
+                bookList.add(bookDto.toEntity());
+            }
+            libraryBranch.setBooks(bookList);
+        }
         return libraryBranch;
     }
 

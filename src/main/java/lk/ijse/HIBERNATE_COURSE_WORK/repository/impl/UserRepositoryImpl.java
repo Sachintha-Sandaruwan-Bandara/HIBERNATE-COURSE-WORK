@@ -7,6 +7,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.UserRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -21,30 +22,41 @@ public class UserRepositoryImpl implements UserRepository {
                 ?userRepositoryImpl=new UserRepositoryImpl()
                 :userRepositoryImpl;
     }
-
+    @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
     @Override
     public Long save(User object) {
-        return null;
+        return (Long) session.save(object);
     }
 
     @Override
     public void update(User object) {
-
+        session.update(object);
     }
 
     @Override
     public User get(Long aLong) {
-        return null;
+        return session.get(User.class, aLong);
     }
 
     @Override
     public void delete(User object) {
+        session.delete(object);
 
     }
 
     @Override
-    public List<User> getAll() {
-        return null;
+    public List<User> getAll(){
+        String sqlQuery = "FROM User ";
+        Query query = session.createQuery(sqlQuery);
+        List list = query.list();
+
+        session.close();
+        return list;
     }
+
+
 }
 

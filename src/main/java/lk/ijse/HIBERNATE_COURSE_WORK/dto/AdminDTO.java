@@ -33,26 +33,32 @@ public class AdminDTO {
         admin.setPassword(this.getPassword());
 
 //        dto lists convert to entity lists
-        List<Book> bookList = new ArrayList<>();
-        for (BookDTO bookDTO : this.books) {
-            bookList.add(bookDTO.toEntity());
-        }
-        admin.setBooks(bookList);
-
-        List<LibraryBranch> libraryBranchList = new ArrayList<>();
-
-        for (LibraryBranchDTO libraryBranchDTO : this.libraryBranches) {
-            libraryBranchList.add(libraryBranchDTO.toEntity());
+        if (this.books !=null) {
+            List<Book> bookList = new ArrayList<>();
+            for (BookDTO bookDTO : books) {
+                bookList.add(bookDTO.toEntity());
+            }
+            admin.setBooks(bookList);
         }
 
-        admin.setLibraryBranches(libraryBranchList);
+        if (this.libraryBranches !=null) {
+            List<LibraryBranch> libraryBranchList = new ArrayList<>();
 
-        List<User> userList = new ArrayList<>();
-        for (UserDTO userDto : this.users) {
-            userList.add(userDto.toEntity());
+            for (LibraryBranchDTO libraryBranchDTO : this.libraryBranches) {
+                libraryBranchList.add(libraryBranchDTO.toEntity());
+            }
+
+            admin.setLibraryBranches(libraryBranchList);
         }
-        admin.setUsers(userList);
+        if (this.users!=null) {
+            List<User> userList = new ArrayList<>();
 
+            for (UserDTO userDto : users) {
+                userList.add(userDto.toEntity());
+            }
+
+            admin.setUsers(userList);
+        }
         return admin;
     }
 

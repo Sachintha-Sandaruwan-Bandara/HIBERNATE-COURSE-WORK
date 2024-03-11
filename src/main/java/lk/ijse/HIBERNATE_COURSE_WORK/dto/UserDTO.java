@@ -30,12 +30,16 @@ public User toEntity(){
     user.setUsername(this.username);
     user.setPassword(this.password);
     user.setEmail(this.email);
-    user.setAdmin(this.admin.toEntity());
-    List<Transaction>transactionList=new ArrayList<>();
-    for (TransactionDTO transactionDto:transactions) {
-        transactionList.add(transactionDto.toEntity());
+    if (this.admin!=null) {
+        user.setAdmin(this.admin.toEntity());
     }
-    user.setTransactions(transactionList);
+    if (this.transactions!=null) {
+        List<Transaction> transactionList = new ArrayList<>();
+        for (TransactionDTO transactionDto : transactions) {
+            transactionList.add(transactionDto.toEntity());
+        }
+        user.setTransactions(transactionList);
+    }
     return user;
 }
 

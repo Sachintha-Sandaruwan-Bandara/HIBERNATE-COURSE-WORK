@@ -4,5 +4,8 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository;
     @created 3/7/2024 - 10:09 PM 
 */
 
+import org.hibernate.Session;
+
 public interface SuperRepository {
+    void setSession(Session session);
 }

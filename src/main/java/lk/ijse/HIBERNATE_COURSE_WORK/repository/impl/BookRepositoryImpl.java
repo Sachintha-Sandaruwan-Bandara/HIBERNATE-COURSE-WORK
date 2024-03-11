@@ -7,6 +7,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Book;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.BookRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -22,27 +23,39 @@ public class BookRepositoryImpl implements BookRepository {
     }
 
     @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    @Override
     public Long save(Book object) {
-        return null;
+        return (Long) session.save(object);
     }
 
     @Override
     public void update(Book object) {
-
+        session.update(object);
     }
 
     @Override
     public Book get(Long aLong) {
-        return null;
+        return session.get(Book.class, aLong);
     }
 
     @Override
     public void delete(Book object) {
-
+        session.delete(object);
     }
 
     @Override
     public List<Book> getAll() {
-        return null;
+         String sqlQuery = "FROM Book";
+        Query query = session.createQuery(sqlQuery);
+        List list = query.list();
+
+        session.close();
+        return list;
     }
+
+
 }

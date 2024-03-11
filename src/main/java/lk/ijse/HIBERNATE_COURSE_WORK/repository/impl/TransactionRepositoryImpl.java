@@ -7,6 +7,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository.impl;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Transaction;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.TransactionRepository;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -21,27 +22,39 @@ private TransactionRepositoryImpl(){}
             :transactionRepositoryImpl;
     }
     @Override
+    public void setSession(Session session) {
+        this.session = session;
+    }
+    @Override
     public Long save(Transaction object) {
-        return null;
+        return (Long) session.save(object);
     }
 
     @Override
     public void update(Transaction object) {
+        session.update(object);
 
     }
 
     @Override
     public Transaction get(Long aLong) {
-        return null;
+        return session.get(Transaction.class, aLong);
     }
 
     @Override
     public void delete(Transaction object) {
-
+        session.delete(object);
     }
 
     @Override
     public List<Transaction> getAll() {
-        return null;
+         String sqlQuery = "FROM Transaction ";
+        Query query = session.createQuery(sqlQuery);
+        List list = query.list();
+
+        session.close();
+        return list;
     }
+
+
 }
