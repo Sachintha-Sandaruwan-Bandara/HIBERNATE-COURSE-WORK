@@ -25,7 +25,7 @@ public class BookDTO {
     private String author;
     private String gener;
     private int qty;
-    private Admin admin;
+    private AdminDTO admin;
     private LibraryBranchDTO libraryBranch;
     private List<TransactionDTO> transactions;
 
@@ -36,7 +36,7 @@ public class BookDTO {
         book.setAuthor(this.author);
         book.setGener(this.gener);
         book.setQty(this.qty);
-        book.setAdmin(this.admin);
+        book.setAdmin(this.admin.toEntity());
         book.setLibraryBranch(this.libraryBranch.toEntity());
         List<Transaction>transactionList=new ArrayList<>();
         for (TransactionDTO transactionDto:this.transactions) {

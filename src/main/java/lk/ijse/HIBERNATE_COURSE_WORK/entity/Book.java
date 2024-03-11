@@ -1,6 +1,7 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.TransactionDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,9 +42,20 @@ public class Book {
     @OneToMany(mappedBy = "book")
     private List<Transaction> transactions;
 
-    public BookDTO toDTO(){
+    public BookDTO toDTO() {
         BookDTO bookDTO = new BookDTO();
-
+        bookDTO.setId(this.id);
+        bookDTO.setTitle(this.title);
+        bookDTO.setAuthor(this.author);
+        bookDTO.setGener(this.gener);
+        bookDTO.setQty(this.qty);
+        bookDTO.setAdmin(this.admin.toDTO());
+        bookDTO.setLibraryBranch(this.libraryBranch.toDTO());
+        List<TransactionDTO> transactionDTOS = new ArrayList<>();
+        for (Transaction transaction : transactions) {
+            transactionDTOS.add(transaction.toDTO());
+        }
+        bookDTO.setTransactions(transactionDTOS);
         return bookDTO;
     }
 
