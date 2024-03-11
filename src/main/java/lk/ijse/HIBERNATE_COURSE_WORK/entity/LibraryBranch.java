@@ -1,11 +1,13 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.entity;
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.LibraryBranchDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -25,15 +27,24 @@ public class LibraryBranch {
 
     private String name;
     private String location;
+    @ManyToOne
+    private Admin admin;
 
     @OneToMany(mappedBy = "libraryBranch")
     private List<Book> books;
 
-    @ManyToOne
-    private Admin admin;
 
     public LibraryBranchDTO toDTO(){
         LibraryBranchDTO libraryBranchDTO = new LibraryBranchDTO();
+        libraryBranchDTO.setId(this.id);
+        libraryBranchDTO.setName(this.name);
+        libraryBranchDTO.setLocation(this.location);
+        libraryBranchDTO.setAdmin(this.admin.toDTO());
+        List<BookDTO>bookDTOS=new ArrayList<>();
+        for (Book book:books) {
+            bookDTOS.add(book.toDTO());
+        }
+        libraryBranchDTO.setBooks(bookDTOS);
 
         return libraryBranchDTO;
     }
