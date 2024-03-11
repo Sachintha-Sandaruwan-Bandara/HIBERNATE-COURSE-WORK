@@ -5,6 +5,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.service.impl;
 */
 
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.AdminRepository;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.impl.AdminRepositoryImpl;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.AdminService;
@@ -12,6 +13,7 @@ import lk.ijse.HIBERNATE_COURSE_WORK.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdminServiceImpl implements AdminService {
@@ -50,21 +52,66 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public AdminDTO getAdmin(long id) {
-        return null;
+        try {
+            session = SessionFactoryConfig.getInstance()
+                    .getSession();
+            adminRepository.setSession(session);
+            Admin admin = adminRepository.get(id);
+            session.close();
+            return admin.toDTO();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override
     public boolean updateAdmin(AdminDTO adminDTO) {
-        return false;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            adminRepository.setSession(session);
+            adminRepository.update(adminDTO.toEntity());
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            transaction.rollback();
+            session.close();
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean deleteAdmin(AdminDTO adminDTO) {
-        return false;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            adminRepository.setSession(session);
+            adminRepository.delete(adminDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+            session.close();
+            return false;
+        }
     }
 
     @Override
     public List<AdminDTO> getAllCustomers() {
-        return null;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        adminRepository.setSession(session);
+        List<Admin> allAdmins= adminRepository.getAll();
+        List<AdminDTO> adminDTOList = new ArrayList<>();
+        for (Admin admin : allAdmins) {
+            adminDTOList.add(admin.toDTO());
+        }
+        return adminDTOList;
     }
 }
