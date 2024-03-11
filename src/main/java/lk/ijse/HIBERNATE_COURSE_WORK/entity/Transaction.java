@@ -37,6 +37,13 @@ public class Transaction {
 
     public TransactionDTO toDTO(){
         TransactionDTO transactionDTO = new TransactionDTO();
+        transactionDTO.setId(this.id);
+        transactionDTO.setReturnDate(this.returnDate);
+        transactionDTO.setBorrowDate(this.borrowDate);
+        transactionDTO.setDueDate(this.dueDate);
+        transactionDTO.setQty(this.qty);
+        transactionDTO.setUser(this.user.toDTO());
+        transactionDTO.setBook(this.book.toDTO());
 
         return transactionDTO;
     }
