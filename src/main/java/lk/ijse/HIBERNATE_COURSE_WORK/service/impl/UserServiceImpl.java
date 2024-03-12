@@ -5,11 +5,15 @@ package lk.ijse.HIBERNATE_COURSE_WORK.service.impl;
 */
 
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.UserRepository;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.impl.UserRepositoryImpl;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.UserService;
+import lk.ijse.HIBERNATE_COURSE_WORK.util.SessionFactoryConfig;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -28,26 +32,86 @@ public class UserServiceImpl implements UserService {
     }
     @Override
     public Long saveUser(UserDTO userDTO) {
-        return null;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+           userRepository.setSession(session);
+            Long id = userRepository.save(userDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return id;
+        } catch (Exception ex) {
+            transaction.rollback();
+            session.close();
+            ex.printStackTrace();
+            return -1L;
+        }
     }
 
     @Override
     public UserDTO getUser(long id) {
-        return null;
+        try {
+            session = SessionFactoryConfig.getInstance()
+                    .getSession();
+            userRepository.setSession(session);
+            User user = userRepository.get(id);
+            session.close();
+            return user.toDTO();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw ex;
+        }
     }
 
     @Override
     public boolean updateUser(UserDTO userDTO) {
-        return false;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            userRepository.setSession(session);
+            userRepository.update(userDTO.toEntity());
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            transaction.rollback();
+            session.close();
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override
     public boolean deleteUser(UserDTO userDTO) {
-        return false;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            userRepository.setSession(session);
+            userRepository.delete(userDTO.toEntity());
+            transaction.commit();
+            session.close();
+            return true;
+        } catch (Exception ex) {
+            transaction.rollback();
+            ex.printStackTrace();
+            session.close();
+            return false;
+        }
     }
 
     @Override
     public List<UserDTO> getAllUsers() {
-        return null;
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        userRepository.setSession(session);
+        List<User> allUsers= userRepository.getAll();
+        List<UserDTO> userDTOList = new ArrayList<>();
+        for (User user : allUsers) {
+            userDTOList.add(user.toDTO());
+        }
+        return userDTOList;
     }
+
 }
