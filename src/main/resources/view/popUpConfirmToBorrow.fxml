@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="146.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.PopUpConfirmToBorrowController">
+   <children>
+      <JFXButton fx:id="btnCancel" layoutX="84.0" layoutY="88.0" onAction="#btnCancelOnAction" text="Cancel" />
+      <JFXButton fx:id="btnConfirm" layoutX="270.0" layoutY="88.0" onAction="#btnConfirmOnAction" text="confirm" />
+      <Label layoutX="114.0" layoutY="22.0" text="Confirm TO Borrow">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

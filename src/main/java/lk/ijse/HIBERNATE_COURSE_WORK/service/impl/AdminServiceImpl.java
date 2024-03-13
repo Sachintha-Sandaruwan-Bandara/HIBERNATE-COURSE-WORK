@@ -4,6 +4,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.service.impl;
     @created 3/7/2024 - 9:47 PM 
 */
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminAuthDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.AdminRepository;
@@ -119,14 +120,17 @@ public class AdminServiceImpl implements AdminService {
         return adminDTOList;
     }
     @Override
-    public boolean authenticate(String username, String password) {
-
+    public AdminAuthDTO authenticate(String username, String password) {
+        AdminAuthDTO adminAuthDTO = new AdminAuthDTO();
         for (AdminDTO admin : adminDTOList) {
             if (admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
-                return true;
+                Long id = admin.getId();
+                adminAuthDTO.setId(id);
+                adminAuthDTO.setFlag(true);
+                return adminAuthDTO;
             }
         }
 
-        return false;
+        return adminAuthDTO;
     }
 }

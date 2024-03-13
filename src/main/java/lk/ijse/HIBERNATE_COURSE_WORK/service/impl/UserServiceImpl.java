@@ -4,6 +4,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.service.impl;
     @created 3/7/2024 - 9:49 PM 
 */
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserAuthDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.UserRepository;
@@ -68,12 +69,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean updateUser(UserDTO userDTO) {
-        session = SessionFactoryConfig.getInstance()
-                .getSession();
+        session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
             userRepository.setSession(session);
             userRepository.update(userDTO.toEntity());
+            transaction.commit();
             session.close();
             return true;
         } catch (Exception ex) {
@@ -117,13 +118,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean authenticate(String username, String password) {
+    public UserAuthDTO authenticate(String username, String password) {
+        UserAuthDTO userAuthDTO = new UserAuthDTO();
         for (UserDTO user : userDTOList) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                return true;
+
+                Long id = user.getId();
+
+                userAuthDTO.setFlag(true);
+                userAuthDTO.setId(id);
+                return userAuthDTO;
             }
         }
-        return false;
+        return userAuthDTO;
     }
 
 }

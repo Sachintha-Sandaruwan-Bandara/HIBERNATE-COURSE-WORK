@@ -5,6 +5,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.service;
 */
 
 
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserAuthDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface UserService extends SuperService{
     boolean deleteUser(UserDTO userDTO);
 
     List<UserDTO> getAllUsers();
-    boolean authenticate(String username, String password);
+    UserAuthDTO authenticate(String username, String password);
 }

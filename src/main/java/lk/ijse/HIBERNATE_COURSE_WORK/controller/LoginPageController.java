@@ -10,6 +10,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.AdminAuthDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserAuthDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Navigation;
 import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Routes;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.AdminService;
@@ -28,6 +30,12 @@ public class LoginPageController {
     @FXML
     private TextField txtUserName;
 
+    public static long adminId;
+    public static long userId;
+
+
+
+
     private AdminService adminService = AdminServiceImpl.getInstance();
     private UserService userService = UserServiceImpl.getInstance();
 
@@ -41,22 +49,26 @@ public class LoginPageController {
         String password = txtPassword.getText();
 
 
-        boolean userRole = userService.authenticate(username, password);
-        boolean adminRole = adminService.authenticate(username, password);
+        UserAuthDTO userAuthDTO = userService.authenticate(username, password);
+        AdminAuthDTO adminAuthDTO = adminService.authenticate(username, password);
 
-        System.out.println(userRole);
-        System.out.println(adminRole);
+        System.out.println(adminAuthDTO.getId());
+        System.out.println(userAuthDTO.getId());
 
-        if (userRole) {
+        if (userAuthDTO.isFlag()) {
             System.out.println("User logged in");
+            userId=userAuthDTO.getId();
+            System.out.println(userId);
             Navigation.navigate(Routes.USERLOGIN,anchorpane);
 
         } else {
             System.out.println("this is not user");
         }
 
-        if (adminRole) {
+        if (adminAuthDTO.isFlag()) {
             System.out.println("Admin logged in");
+            adminId=adminAuthDTO.getId();
+            System.out.println(adminId);
             Navigation.navigate(Routes.ADMINLOGIN,anchorpane);
         } else {
             System.out.println("this is not admin");

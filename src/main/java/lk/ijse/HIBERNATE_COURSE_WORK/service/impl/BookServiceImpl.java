@@ -65,12 +65,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public boolean updateBook(BookDTO bookDTO) {
-        session = SessionFactoryConfig.getInstance()
-                .getSession();
+        session = SessionFactoryConfig.getInstance().getSession();
         Transaction transaction = session.beginTransaction();
         try {
             bookRepository.setSession(session);
             bookRepository.update(bookDTO.toEntity());
+            transaction.commit();
             session.close();
             return true;
         } catch (Exception ex) {

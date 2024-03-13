@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: #272A37;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserAccountController">
+   <children>
+      <Label layoutX="402.0" layoutY="29.0" text="PROFILE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Label>
+      <Label layoutX="229.0" layoutY="297.0" text="USER NAME  :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblUserName" layoutX="321.0" layoutY="297.0" text="USER NAME  :" textFill="#1e8ced">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="604.0" layoutY="292.0" text="E-MAIL  :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblEmail" layoutX="671.0" layoutY="292.0" text="E MAIL  :" textFill="#1e8ced">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="80.0" fitWidth="86.0" layoutX="468.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/pngwing.com.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtUserName" layoutX="322.0" layoutY="294.0" />
+      <TextField fx:id="txtEmail" layoutX="667.0" layoutY="289.0" />
+      <Label fx:id="lblNewPwd" layoutX="195.0" layoutY="373.0" text="NEW PASSWORD  :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPassword" layoutX="322.0" layoutY="370.0" />
+      <Label fx:id="lblRePwd" layoutX="516.0" layoutY="371.0" text="RE-ENTER PASSWORD  :" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtReEnterPassword" layoutX="667.0" layoutY="368.0" />
+      <JFXButton fx:id="btnUpdate" layoutX="441.0" layoutY="501.0" onAction="#btnUpdateOnAction" prefHeight="45.0" prefWidth="162.0" style="-fx-background-color: #1D90F5;" text="UPDATE" textFill="WHITE" />
+      <JFXToggleButton fx:id="togleBtnUpdate" layoutX="422.0" layoutY="183.0" onAction="#toggleBtnUpdateOnAction" prefHeight="67.0" prefWidth="170.0" text="update" textFill="WHITE" />
+   </children>
+</AnchorPane>

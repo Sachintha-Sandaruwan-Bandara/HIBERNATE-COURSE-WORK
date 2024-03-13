@@ -35,6 +35,22 @@ public class Navigation {
                 initUI("adminDashboard.fxml");
                 window.setTitle("admin dashboard");
                 break;
+            case USERBOOKS:
+                initUI("userBooks.fxml");
+                window.setTitle("books");
+                break;
+            case USERCART:
+                initUI("userCart.fxml");
+                window.setTitle("cart");
+                break;
+            case USERBORROWDBOOKS:
+                initUI("userBorrowdBooks.fxml");
+                window.setTitle("borrowd books");
+                break;
+            case USERACCOUNT:
+                initUI("userAccount.fxml");
+                window.setTitle("user account");
+                break;
 
 
             default:
