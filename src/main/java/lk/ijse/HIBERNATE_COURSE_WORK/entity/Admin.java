@@ -45,25 +45,28 @@ public class Admin {
         adminDTO.setId(this.id);
         adminDTO.setUsername(this.username);
         adminDTO.setPassword(this.password);
-        List<BookDTO>bookDTOS=new ArrayList<>();
-        for (Book book:this.books) {
-            bookDTOS.add(book.toDTO());
-        }
-        adminDTO.setBooks(bookDTOS);
-
-        List<LibraryBranchDTO>libraryBranchDTOS=new ArrayList<>();
-        for (LibraryBranch libraryBranch:this.libraryBranches) {
-            libraryBranchDTOS.add(libraryBranch.toDTO());
-        }
-        adminDTO.setLibraryBranches(libraryBranchDTOS);
-
-
-        List<UserDTO>userDTOS=new ArrayList<>();
-        for (User user:this.users) {
-            userDTOS.add(user.toDTO());
-        }
-        adminDTO.setUsers(userDTOS);
-
+//        if (this.books!=null) {
+//            List<BookDTO> bookDTOS = new ArrayList<>();
+//            for (Book book : this.books) {
+//                bookDTOS.add(book.toDTO());
+//            }
+//            adminDTO.setBooks(bookDTOS);
+//        }
+//        if (this.libraryBranches!=null) {
+//            List<LibraryBranchDTO> libraryBranchDTOS = new ArrayList<>();
+//            for (LibraryBranch libraryBranch : this.libraryBranches) {
+//                libraryBranchDTOS.add(libraryBranch.toDTO());
+//            }
+//            adminDTO.setLibraryBranches(libraryBranchDTOS);
+//
+//        }
+//        if (this.users!=null) {
+//            List<UserDTO> userDTOS = new ArrayList<>();
+//            for (User user : this.users) {
+//                userDTOS.add(user.toDTO());
+//            }
+//            adminDTO.setUsers(userDTOS);
+//        }
         return adminDTO;
     }
 

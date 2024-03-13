@@ -19,4 +19,5 @@ public interface UserService extends SuperService{
     boolean deleteUser(UserDTO userDTO);
 
     List<UserDTO> getAllUsers();
+    boolean authenticate(String username, String password);
 }

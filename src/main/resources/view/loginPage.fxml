@@ -25,15 +25,15 @@
             <Font name="System Bold" size="33.0" />
          </font>
       </Text>
-      <TextField layoutX="189.0" layoutY="335.0" prefHeight="38.0" prefWidth="305.0" promptText="User Name" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
-      <TextField layoutX="189.0" layoutY="394.0" prefHeight="38.0" prefWidth="305.0" promptText="Password" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
-      <JFXButton layoutX="290.0" layoutY="458.0" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #1D90F5; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE" />
+      <TextField fx:id="txtUserName" layoutX="189.0" layoutY="335.0" prefHeight="38.0" prefWidth="305.0" promptText="User Name" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
+      <TextField fx:id="txtPassword" layoutX="189.0" layoutY="394.0" prefHeight="38.0" prefWidth="305.0" promptText="Password" style="-fx-background-color: #323644; -fx-text-fill: white; -fx-border-radius: 10; -fx-background-radius: 10;" />
+      <JFXButton layoutX="290.0" layoutY="458.0" onAction="#btnLoginOnAction" prefHeight="32.0" prefWidth="96.0" style="-fx-background-color: #1D90F5; -fx-background-radius: 10; -fx-border-radius: 10;" text="Login" textFill="WHITE" />
       <Text fill="#9ca8b7" layoutX="189.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Havent account yet">
          <font>
             <Font name="System Bold" size="11.0" />
          </font>
       </Text>
-      <Text fill="#1e8ced" layoutX="299.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an account">
+      <Text fill="#1e8ced" layoutX="299.0" layoutY="316.0" onMouseClicked="#createAccountOnMouseClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="Create an account">
          <font>
             <Font size="11.0" />
          </font>

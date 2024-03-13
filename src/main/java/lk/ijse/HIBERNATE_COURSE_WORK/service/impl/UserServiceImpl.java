@@ -21,12 +21,14 @@ public class UserServiceImpl implements UserService {
     private static UserService userService;
 
     private final UserRepository userRepository;
+    private List<UserDTO>userDTOList;
 
     private UserServiceImpl(){
         userRepository=UserRepositoryImpl.getInstance();
+        userDTOList=getAllUsers();
     }
     public static UserService getInstance(){
-        return null==userService
+        return (null==userService)
                 ?userService=new UserServiceImpl()
                 :userService;
     }
@@ -112,6 +114,16 @@ public class UserServiceImpl implements UserService {
             userDTOList.add(user.toDTO());
         }
         return userDTOList;
+    }
+
+    @Override
+    public boolean authenticate(String username, String password) {
+        for (UserDTO user : userDTOList) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

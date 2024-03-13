@@ -17,28 +17,6 @@ import java.util.List;
 
 public class LauncherWrapper {
     public static void main(String[] args) {
-//        Launcher.main(args);
-
-//        Session session = SessionFactoryConfig.getInstance().getSession();
-//        Transaction transaction = session.beginTransaction();
-//
-//        transaction.commit();
-//        session.close();
-        AdminDTO adminDTO = new AdminDTO();
-        adminDTO.setUsername("namal");
-        adminDTO.setPassword("sfjsj");
-
-        List<BookDTO>bookDTOS=new ArrayList<>();
-        BookDTO bookDTO = new BookDTO();
-        bookDTO.setAuthor("kumal");
-
-        bookDTOS.add(bookDTO);
-
-        adminDTO.setBooks(bookDTOS);
-
-        AdminService instance = AdminServiceImpl.getInstance();
-        Long aLong = instance.saveAdmin(adminDTO);
-
-        System.out.println(aLong);
+        Launcher.main(args);
     }
 }

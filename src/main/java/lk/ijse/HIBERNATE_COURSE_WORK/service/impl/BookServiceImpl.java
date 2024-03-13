@@ -25,7 +25,7 @@ public class BookServiceImpl implements BookService {
         bookRepository=BookRepositoryImpl.getInstance();
     }
     public static BookService getInstance(){
-        return null==bookService
+        return (null==bookService)
                 ?bookService=new BookServiceImpl()
                 :bookService;
     }

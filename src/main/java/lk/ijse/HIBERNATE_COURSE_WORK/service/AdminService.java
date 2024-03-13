@@ -18,7 +18,9 @@ public interface AdminService extends SuperService{
 
     boolean deleteAdmin(AdminDTO adminDTO);
 
-    List<AdminDTO> getAllCustomers();
+    List<AdminDTO> getAllAdmins();
+
+   boolean authenticate(String username, String password);
 
 
 }

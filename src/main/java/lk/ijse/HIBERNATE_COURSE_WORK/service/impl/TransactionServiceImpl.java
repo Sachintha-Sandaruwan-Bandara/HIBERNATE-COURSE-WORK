@@ -25,7 +25,7 @@ public class TransactionServiceImpl implements TransactionService {
         transactionRepository=TransactionRepositoryImpl.getInstance();
     }
     public static TransactionService getInstance(){
-        return null==transactionService
+        return (null==transactionService)
                 ?transactionService=new TransactionServiceImpl()
                 :transactionService;
     }

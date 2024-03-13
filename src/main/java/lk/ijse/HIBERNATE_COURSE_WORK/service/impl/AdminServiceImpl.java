@@ -10,6 +10,7 @@ import lk.ijse.HIBERNATE_COURSE_WORK.repository.AdminRepository;
 import lk.ijse.HIBERNATE_COURSE_WORK.repository.impl.AdminRepositoryImpl;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.AdminService;
 import lk.ijse.HIBERNATE_COURSE_WORK.util.SessionFactoryConfig;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -22,8 +23,11 @@ public class AdminServiceImpl implements AdminService {
 
     private final AdminRepository adminRepository;
 
+    private List<AdminDTO>adminDTOList;
+
     private AdminServiceImpl(){
         adminRepository=AdminRepositoryImpl.getInstance();
+        adminDTOList=getAllAdmins();
     }
     public static AdminService getInstance(){
         return null==adminService
@@ -103,7 +107,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<AdminDTO> getAllCustomers() {
+    public List<AdminDTO> getAllAdmins() {
         session = SessionFactoryConfig.getInstance()
                 .getSession();
         adminRepository.setSession(session);
@@ -113,5 +117,16 @@ public class AdminServiceImpl implements AdminService {
             adminDTOList.add(admin.toDTO());
         }
         return adminDTOList;
+    }
+    @Override
+    public boolean authenticate(String username, String password) {
+
+        for (AdminDTO admin : adminDTOList) {
+            if (admin.getUsername().equals(username) && admin.getPassword().equals(password)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

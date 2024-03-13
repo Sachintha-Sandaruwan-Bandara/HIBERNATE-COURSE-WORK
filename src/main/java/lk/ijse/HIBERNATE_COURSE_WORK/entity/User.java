@@ -39,13 +39,16 @@ public class User {
         userDTO.setUsername(this.username);
         userDTO.setPassword(this.password);
         userDTO.setEmail(this.email);
-        userDTO.setAdmin(this.admin.toDTO());
-        List<TransactionDTO>transactionList=new ArrayList<>();
-        for (Transaction transaction:transactions) {
-            transactionList.add(transaction.toDTO());
-        }
-        userDTO.setTransactions(transactionList);
-
+//        if (this.admin!=null) {
+//            userDTO.setAdmin(this.admin.toDTO());
+//        }
+//        if (this.transactions!=null) {
+//            List<TransactionDTO> transactionList = new ArrayList<>();
+//            for (Transaction transaction : transactions) {
+//                transactionList.add(transaction.toDTO());
+//            }
+//            userDTO.setTransactions(transactionList);
+//        }
         return userDTO;
     }
 

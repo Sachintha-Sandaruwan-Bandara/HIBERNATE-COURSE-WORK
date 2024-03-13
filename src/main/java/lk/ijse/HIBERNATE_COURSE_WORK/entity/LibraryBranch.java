@@ -39,13 +39,16 @@ public class LibraryBranch {
         libraryBranchDTO.setId(this.id);
         libraryBranchDTO.setName(this.name);
         libraryBranchDTO.setLocation(this.location);
-        libraryBranchDTO.setAdmin(this.admin.toDTO());
-        List<BookDTO>bookDTOS=new ArrayList<>();
-        for (Book book:books) {
-            bookDTOS.add(book.toDTO());
-        }
-        libraryBranchDTO.setBooks(bookDTOS);
-
+//        if (this.admin!=null) {
+//            libraryBranchDTO.setAdmin(this.admin.toDTO());
+//        }
+//        if (this.books!=null) {
+//            List<BookDTO> bookDTOS = new ArrayList<>();
+//            for (Book book : books) {
+//                bookDTOS.add(book.toDTO());
+//            }
+//            libraryBranchDTO.setBooks(bookDTOS);
+//        }
         return libraryBranchDTO;
     }
 }

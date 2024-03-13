@@ -29,7 +29,7 @@ public class LibraryBranchServiceImpl implements LibraryBranchService {
     }
 
     public static LibraryBranchService getInstance(){
-        return null==libraryBranchService
+        return (null==libraryBranchService)
                 ?libraryBranchService=new LibraryBranchServiceImpl()
                 :libraryBranchService;
     }
