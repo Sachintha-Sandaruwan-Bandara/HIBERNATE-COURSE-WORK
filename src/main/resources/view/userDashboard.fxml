@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserDashboardController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="670.0" prefWidth="1250.0" style="-fx-background-color: #1F1F20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserDashboardController">
+   <children>
+      <Pane layoutX="7.0" layoutY="6.0" prefHeight="658.0" prefWidth="225.0" style="-fx-background-color: #1F1F20;">
+         <children>
+            <JFXButton layoutX="14.0" layoutY="113.0" onAction="#btnBooksOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Books">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="14.0" layoutY="171.0" onAction="#btnMyCartOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="MyCart">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="14.0" layoutY="236.0" onAction="#btnBorrowdBooksOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Borrowd Books">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="24.0" layoutY="545.0" onAction="#btnMyAccountOnAction" prefHeight="40.0" prefWidth="184.0" text="My Account" textFill="WHITE" />
+            <JFXButton layoutX="21.0" layoutY="597.0" onAction="#btnLogOutOnAction" prefHeight="40.0" prefWidth="184.0" text="LogOut" textFill="WHITE" />
+         </children>
+      </Pane>
+      <AnchorPane fx:id="anchorPaneReloading" layoutX="240.0" layoutY="6.0" prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: white;" />
+   </children>
 </AnchorPane>
