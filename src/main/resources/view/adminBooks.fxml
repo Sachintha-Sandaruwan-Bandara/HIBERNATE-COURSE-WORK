@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
 
 <AnchorPane prefHeight="670.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.AdminBooksController">
    <children>
-      <Label layoutX="549.0" layoutY="270.0" text="books" />
+      <ScrollPane fx:id="scrollPane" layoutX="6.0" layoutY="250.0" prefHeight="414.0" prefWidth="986.0">
+        <content>
+          <AnchorPane fx:id="acrollAP" minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="966.0">
+               <children>
+                  <VBox fx:id="vBox" layoutX="14.0" layoutY="14.0" prefHeight="78.0" prefWidth="940.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <JFXButton layoutX="868.0" layoutY="162.0" onAction="#btnAddUserOnAction" prefHeight="44.0" prefWidth="114.0" style="-fx-background-color: lightblue;" text="add user" textFill="#0d0606" />
    </children>
 </AnchorPane>

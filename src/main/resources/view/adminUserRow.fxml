@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="78.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblUserId" layoutX="43.0" layoutY="31.0" text="user id" />
+      <Label fx:id="lblUserName" layoutX="180.0" layoutY="32.0" text="user name" />
+      <Label fx:id="lblEmail" layoutX="355.0" layoutY="32.0" text="email" />
+      <Label fx:id="lblPassword" layoutX="528.0" layoutY="31.0" text="password" />
+      <JFXButton fx:id="btnUpdate" layoutX="693.0" layoutY="28.0" style="-fx-background-color: lightblue;" text="update" />
+      <JFXButton fx:id="btnDelete" layoutX="819.0" layoutY="28.0" style="-fx-background-color: red;" text="delete" />
+   </children>
+</AnchorPane>

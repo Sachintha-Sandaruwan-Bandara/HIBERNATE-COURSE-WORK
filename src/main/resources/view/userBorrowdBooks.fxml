@@ -8,7 +8,7 @@
    <children>
       <ScrollPane fx:id="scrollPane" layoutX="11.0" layoutY="172.0" prefHeight="464.0" prefWidth="975.0">
         <content>
-          <AnchorPane fx:id="scrollAp" minHeight="0.0" minWidth="0.0" prefHeight="549.0" prefWidth="966.0">
+          <AnchorPane fx:id="scrollAp" minHeight="0.0" minWidth="0.0" prefHeight="550.0" prefWidth="954.0">
                <children>
                   <VBox fx:id="vbox" layoutX="5.0" layoutY="14.0" prefHeight="95.0" prefWidth="946.0" />
                </children>

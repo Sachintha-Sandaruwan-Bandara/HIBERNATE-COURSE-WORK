@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="78.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblBranchId" layoutX="51.0" layoutY="31.0" text="branch id" />
+      <Label fx:id="lblBranchLocation" layoutX="266.0" layoutY="31.0" text="location" />
+      <Label fx:id="lblBranchName" layoutX="515.0" layoutY="31.0" text="name" />
+      <JFXButton fx:id="btnUpdate" layoutX="703.0" layoutY="30.0" style="-fx-background-color: lightblue;" text="update" />
+      <JFXButton fx:id="btnDelete" layoutX="829.0" layoutY="30.0" style="-fx-background-color: red;" text="delete" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="78.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblBookId" layoutX="44.0" layoutY="31.0" text="book id" />
+      <Label fx:id="lblBookTitle" layoutX="164.0" layoutY="31.0" text="book title" />
+      <Label fx:id="lblBookAuther" layoutX="295.0" layoutY="31.0" text="auther" />
+      <Label fx:id="lblBookGener" layoutX="435.0" layoutY="31.0" text="gener" />
+      <Label fx:id="lblBookQty" layoutX="567.0" layoutY="31.0" text="qty" />
+      <Label fx:id="lblBranch" layoutX="661.0" layoutY="31.0" text="branch" />
+      <JFXButton fx:id="btnUpdate" layoutX="757.0" layoutY="27.0" style="-fx-background-color: lightblue;" text="update" />
+      <JFXButton fx:id="btnDelete" layoutX="844.0" layoutY="27.0" style="-fx-background-color: red;" text="delete" />
+   </children>
+</AnchorPane>
