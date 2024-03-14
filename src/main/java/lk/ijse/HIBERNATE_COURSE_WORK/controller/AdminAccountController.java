@@ -1,8 +1,8 @@
 package lk.ijse.HIBERNATE_COURSE_WORK.controller;
 /* 
     @author Sachi_S_Bandara
-    @created 3/13/2024 - 12:01 PM 
+    @created 3/14/2024 - 6:03 PM 
 */
 
-public class AdminDashbordController {
+public class AdminAccountController {
 }

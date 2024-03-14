@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-
-<AnchorPane prefHeight="670.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.AdminDashbordController">
+<AnchorPane fx:id="mainAp" prefHeight="670.0" prefWidth="1250.0" style="-fx-background-color: #1F1F20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.AdminDashboardController">
    <children>
-      <Pane layoutX="4.0" layoutY="4.0" prefHeight="658.0" prefWidth="255.0" style="-fx-background-color: red;" />
+      <Pane layoutY="8.0" prefHeight="658.0" prefWidth="255.0" style="-fx-background-color: #1F1F20;">
+         <children>
+            <JFXButton layoutX="26.0" layoutY="110.0" onAction="#btnBooksOnAction" prefHeight="25.0" prefWidth="157.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Books" />
+            <JFXButton layoutX="27.0" layoutY="170.0" onAction="#btnUsersOnAction" prefHeight="25.0" prefWidth="157.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Users" />
+            <JFXButton layoutX="26.0" layoutY="230.0" onAction="#btnOverdueUsersOnAction" prefHeight="25.0" prefWidth="157.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Overdue users" />
+            <JFXButton layoutX="35.0" layoutY="518.0" onAction="#btnMyAccountOnAction" prefHeight="40.0" prefWidth="181.0" text="My Account" textFill="WHITE" />
+            <JFXButton layoutX="37.0" layoutY="571.0" onAction="#btnLogOutOnAction" prefHeight="40.0" prefWidth="181.0" text="LogOut" textFill="WHITE" />
+            <JFXButton layoutX="26.0" layoutY="299.0" onAction="#btnBranchesOnAction" prefHeight="25.0" prefWidth="157.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Branches" />
+         </children></Pane>
+      <AnchorPane fx:id="anchorPaneReloading" layoutX="249.0" prefHeight="670.0" prefWidth="1000.0" style="-fx-background-color: white;" />
    </children>
 </AnchorPane>

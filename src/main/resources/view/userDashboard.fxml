@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="670.0" prefWidth="1250.0" style="-fx-background-color: #1F1F20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserDashboardController">
+<AnchorPane fx:id="mainAp" prefHeight="670.0" prefWidth="1250.0" style="-fx-background-color: #1F1F20;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserDashboardController">
    <children>
       <Pane layoutX="7.0" layoutY="6.0" prefHeight="658.0" prefWidth="225.0" style="-fx-background-color: #1F1F20;">
          <children>
@@ -15,12 +14,7 @@
                   <Font size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="14.0" layoutY="171.0" onAction="#btnMyCartOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="MyCart">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="14.0" layoutY="236.0" onAction="#btnBorrowdBooksOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Borrowd Books">
+            <JFXButton layoutX="14.0" layoutY="173.0" onAction="#btnBorrowdBooksOnAction" prefHeight="25.0" prefWidth="128.0" styleClass="animated-button1" stylesheets="@../style/styles.css" text="Borrowd Books">
                <font>
                   <Font size="13.0" />
                </font>

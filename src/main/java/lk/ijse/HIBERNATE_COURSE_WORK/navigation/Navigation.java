@@ -5,19 +5,14 @@ package lk.ijse.HIBERNATE_COURSE_WORK.navigation;
 */
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class Navigation {
     public static AnchorPane anchorPane;
-
 
 
     public static void navigate(Routes route, javafx.scene.layout.AnchorPane anchorPane) throws IOException {
@@ -27,6 +22,10 @@ public class Navigation {
 
 
         switch (route) {
+            case LOGOUT:
+                initUI("loginPage.fxml");
+                window.setTitle("login Page");
+                break;
             case USERLOGIN:
                 initUI("userDashboard.fxml");
                 window.setTitle("user dashboard");
@@ -39,10 +38,7 @@ public class Navigation {
                 initUI("userBooks.fxml");
                 window.setTitle("books");
                 break;
-            case USERCART:
-                initUI("userCart.fxml");
-                window.setTitle("cart");
-                break;
+
             case USERBORROWDBOOKS:
                 initUI("userBorrowdBooks.fxml");
                 window.setTitle("borrowd books");
@@ -50,6 +46,26 @@ public class Navigation {
             case USERACCOUNT:
                 initUI("userAccount.fxml");
                 window.setTitle("user account");
+                break;
+            case ADMINBOOKS:
+                initUI("adminBooks.fxml");
+                window.setTitle("books");
+                break;
+            case ADMINUSERS:
+                initUI("adminUsers.fxml");
+                window.setTitle("users");
+                break;
+            case ADMINOVERDUEUSERS:
+                initUI("adminOverdueUsers.fxml");
+                window.setTitle("overdue users");
+                break;
+            case ADMINBRANCHES:
+                initUI("adminBranches.fxml");
+                window.setTitle("branches");
+                break;
+            case ADMINACCOUNT:
+                initUI("adminAccount.fxml");
+                window.setTitle("admin account");
                 break;
 
 

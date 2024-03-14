@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<AnchorPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: #5A648F;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserBooksController">
+<AnchorPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserBooksController">
    <children>
       <ScrollPane fx:id="scrollPane" layoutX="4.0" layoutY="127.0" prefHeight="520.0" prefWidth="988.0">
          <content>
-            <AnchorPane fx:id="anchorPane" prefHeight="1748.0" prefWidth="965.0" style="-fx-background-color: #5A648F;">
+            <AnchorPane fx:id="anchorPane" prefHeight="1748.0" prefWidth="965.0" style="-fx-background-color: white;">
                <children>
                   <VBox fx:id="vbox1" layoutX="13.0" layoutY="21.0" prefHeight="200.0" prefWidth="217.0" />
                   <VBox fx:id="vbox2" layoutX="247.0" layoutY="21.0" prefHeight="200.0" prefWidth="217.0" />

@@ -8,9 +8,13 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.TransactionDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
@@ -22,11 +26,13 @@ import lk.ijse.HIBERNATE_COURSE_WORK.service.impl.TransactionServiceImpl;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.impl.UserServiceImpl;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserBooksController {
 
+    long userId;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -43,16 +49,14 @@ public class UserBooksController {
     private UserService userService;
     private TransactionService transactionService;
     private List<BookDTO> allBooks;
-    long userId;
-
 
     public void initialize() throws IOException {
         bookService = BookServiceImpl.getInstance();
-        userService= UserServiceImpl.getInstance();
-        transactionService= TransactionServiceImpl.getInstance();
+        userService = UserServiceImpl.getInstance();
+        transactionService = TransactionServiceImpl.getInstance();
         getAllBooks();
         loadAllBooks();
-        userId=LoginPageController.userId;
+        userId = LoginPageController.userId;
 
     }
 
@@ -91,7 +95,7 @@ public class UserBooksController {
                 setVBoxAndAction(vbox4, node, bookCardController);
             }
 
-            Long bookId= allBooks.get(i).getId();
+            Long bookId = allBooks.get(i).getId();
         }
     }
 
@@ -99,47 +103,130 @@ public class UserBooksController {
 
         JFXButton btnBorrow = bookCardController.getBtnBorrow();
 
-        long bookId= bookCardController.getId();
+        long bookId = bookCardController.getId();
 
         btnBorrow.setOnAction(actionEvent -> {
-            System.out.println(bookId + "btn clicked");
-            System.out.println("btn clicked bla");
-            BookDTO book = bookService.getBook(bookId);
-            BookDTO bookDTO = new BookDTO();
-            bookDTO.setId(bookId);
-            bookDTO.setTitle(book.getTitle());
-            bookDTO.setAuthor(book.getAuthor());
-            bookDTO.setGener(book.getGener());
-            int qty = book.getQty();
-            bookDTO.setQty(qty - 1);
+            BookDTO exsistBook=bookService.getBook(bookId);
+            //pothe qty ek 0 nam mukuth koranta bahane darling
+            if (exsistBook.getQty()!=0) {
 
-            boolean b = bookService.updateBook(bookDTO);
-            if (b) {
+                //gannawada nadda confirm krgnn form ekk hdl eken cnfirm krd ndd kyl return krgnnw
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/popUpConfirmToBorrow.fxml"));
 
+                PopUpConfirmToBorrowController popUpConfirmToBorrowController = new PopUpConfirmToBorrowController();
+
+                fxmlLoader.setController(popUpConfirmToBorrowController);
                 try {
-                    initialize();
+                    Stage stage = new Stage();
+                    Parent root = fxmlLoader.load();
+                    Scene scene = new Scene(root);
+                    popUpConfirmToBorrowController.setStage(stage);
+                    stage.setScene(scene);
+                    stage.showAndWait();
+
+                    System.out.println(popUpConfirmToBorrowController.isCanceled());
+                    System.out.println(popUpConfirmToBorrowController.isConfirmed());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                System.out.println("updated");
-                    UserDTO user = userService.getUser(userId);
 
-                    TransactionDTO transactionDTO = new TransactionDTO();
-                    transactionDTO.setBook(book);
-                    transactionDTO.setUser(user);
+                if (popUpConfirmToBorrowController.isConfirmed()) {
+                    //gaththa potha get krgnnw psse ekn data arn dto ekkt dgnnw qty ek adu krl update kkrnw
+                    BookDTO book = bookService.getBook(bookId);
+                    BookDTO bookDTO = new BookDTO();
+                    bookDTO.setId(book.getId());
+                    bookDTO.setTitle(book.getTitle());
+                    bookDTO.setAuthor(book.getAuthor());
+                    bookDTO.setGener(book.getGener());
+                    bookDTO.setLibraryBranch(book.getLibraryBranch());
+                    bookDTO.setTransactions(book.getTransactions());
+                    if (book.getQty() != 0) {
+                        bookDTO.setQty(book.getQty() - 1);
+                    } else {
+                        bookDTO.setQty(book.getQty());
+                    }
+                    boolean isBookUpdated = bookService.updateBook(bookDTO);
+// transaction ekata danna hadaganna book dto eka
+                    if (isBookUpdated) {
+                        BookDTO book1 = bookService.getBook(bookId);
+                        BookDTO bookDTO1 = new BookDTO();
+                        bookDTO1.setId(book1.getId());
+                        bookDTO1.setTitle(book1.getTitle());
+                        bookDTO1.setAuthor(book1.getAuthor());
+                        bookDTO1.setGener(book1.getGener());
+                        bookDTO1.setLibraryBranch(book1.getLibraryBranch());
+                        bookDTO1.setTransactions(book1.getTransactions());
+                        bookDTO1.setQty(1);
 
-                    Long aLong = transactionService.saveTransaction(transactionDTO);
+                        //trnsaction ekt userw danna get krgnnw
+                        UserDTO user = userService.getUser(userId);
+
+                        TransactionDTO transactionDTO = new TransactionDTO();
+                        transactionDTO.setUser(user);
+                        transactionDTO.setBook(book1);
+
+                        //add today to borrow date
+                        LocalDate localDate = LocalDate.now();
+                        java.sql.Date sqlDate = java.sql.Date.valueOf(localDate);
+                        transactionDTO.setBorrowDate(sqlDate);
+
+                        //after 10 days for due date
+                        LocalDate today = LocalDate.now();
+                        LocalDate dueDate = today.plusDays(10);
+                        java.sql.Date sqlDueDate = java.sql.Date.valueOf(dueDate);
+                        transactionDTO.setDueDate(sqlDueDate);
+
+                        transactionDTO.setQty(1);
 
 
+                        //transaction save
+                        Long savedTrsnsactionID = transactionService.saveTransaction(transactionDTO);
 
 
+                        //user ge transaction ek usert dnwa
 
+                        UserDTO userDTO = new UserDTO();
+                        userDTO.setId(user.getId());
+                        userDTO.setUsername(user.getUsername());
+                        userDTO.setAdmin(user.getAdmin());
+                        userDTO.setPassword(user.getPassword());
+                        userDTO.setEmail(user.getEmail());
 
+                        List<TransactionDTO> transactions = userDTO.getTransactions();
+                        if (transactions == null) {
+                            transactions = new ArrayList<>();
+                        } else {
+                            //get saved  transaction for add to user
+                            TransactionDTO transaction = transactionService.getTransaction(savedTrsnsactionID);
+                            boolean isAdded = transactions.add(transaction);
+
+                            if (isAdded) {
+                                System.out.println("transaction added to user");
+                            }
+                        }
+                        boolean isUpdated = userService.updateUser(userDTO);
+
+                        if (isUpdated) {
+                            System.out.println("user updated");
+                            try {
+                                initialize();
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    }
+                }
+            }else {
+                Alert alert = new Alert(Alert.AlertType.WARNING);
+                alert.setTitle("Out of Stock");
+                alert.setHeaderText(null);
+                alert.setContentText("This book is currently out of stock.");
+
+                alert.showAndWait();
             }
-
         });
 
-  VBox vBox1 = new VBox(node);
+        VBox vBox1 = new VBox(node);
         vbox.getChildren().add(vBox1);
         vbox.setSpacing(20);
 

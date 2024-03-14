@@ -2,53 +2,78 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="351.0" prefWidth="217.0" style="-fx-background-color: #3D404B; -fx-background-radius: 15px; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="351.0" prefWidth="217.0" style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fx:id="bookImg" fitHeight="179.0" fitWidth="188.0" layoutX="15.0" layoutY="13.0" pickOnBounds="true">
          <image>
             <Image url="@../assets/Default_image.jpg" />
          </image></ImageView>
-      <Label layoutX="67.0" layoutY="199.0" text="Title :" textFill="WHITE">
+      <Label layoutX="73.0" layoutY="202.0" text="Title :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label layoutX="53.0" layoutY="217.0" text="Author :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label layoutX="59.0" layoutY="220.0" text="Author :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label layoutX="56.0" layoutY="235.0" text="Gener :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label layoutX="62.0" layoutY="238.0" text="Gener :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label layoutX="40.0" layoutY="253.0" text="Available :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label layoutX="46.0" layoutY="256.0" text="Available :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label fx:id="lblTitle" layoutX="107.0" layoutY="199.0" text="title" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label fx:id="lblTitle" layoutX="113.0" layoutY="202.0" text="title">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label fx:id="lblAuthor" layoutX="105.0" layoutY="217.0" text="Author :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label fx:id="lblAuthor" layoutX="111.0" layoutY="220.0" text="Author :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label fx:id="lblGener" layoutX="107.0" layoutY="235.0" text="Gener :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label fx:id="lblGener" layoutX="113.0" layoutY="238.0" text="Gener :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <Label fx:id="lblQty" layoutX="107.0" layoutY="253.0" text="Available :" textFill="WHITE">
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <Label fx:id="lblQty" layoutX="113.0" layoutY="256.0" text="Available :">
          <font>
             <Font name="System Bold" size="12.0" />
-         </font></Label>
-      <JFXButton fx:id="btnBorrow" layoutX="107.0" layoutY="295.0" prefHeight="34.0" prefWidth="86.0" style="-fx-background-color: #1D90F5;" text="Borrow" textFill="WHITE" />
+         </font>
+         <effect>
+            <Blend />
+         </effect></Label>
+      <JFXButton fx:id="btnBorrow" buttonType="RAISED" layoutX="25.0" layoutY="298.0" prefHeight="34.0" prefWidth="163.0" style="-fx-background-color: #1D90F5; -fx-background-radius: 15px 15px 0px 0px; -fx-border-radius: 15px 15px 0px 0px;" text="Borrow" textFill="WHITE" />
    </children>
    <effect>
-      <DropShadow blurType="TWO_PASS_BOX" height="58.59" radius="29.340000000000003" spread="0.08" width="60.77" />
+      <InnerShadow blurType="GAUSSIAN" choke="0.17" height="37.38" radius="14.095" />
    </effect>
 </AnchorPane>

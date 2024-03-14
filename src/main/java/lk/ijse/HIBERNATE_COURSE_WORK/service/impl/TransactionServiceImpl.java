@@ -71,6 +71,7 @@ public class TransactionServiceImpl implements TransactionService {
         try {
             transactionRepository.setSession(session);
            transactionRepository.update(transactionDTO.toEntity());
+           transaction.commit();
             session.close();
             return true;
         } catch (Exception ex) {
