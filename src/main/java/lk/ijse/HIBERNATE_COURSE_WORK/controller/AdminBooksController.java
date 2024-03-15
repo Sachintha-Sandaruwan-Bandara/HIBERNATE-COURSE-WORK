@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.TransactionDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Navigation;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Routes;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.BookService;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.impl.BookServiceImpl;
 
@@ -43,8 +45,8 @@ public class AdminBooksController {
         bookDTOList=bookService.getAllBooks();
     }
     @FXML
-    void btnAddUserOnAction(ActionEvent event) {
-
+    void btnAddUserOnAction(ActionEvent event) throws IOException {
+        Navigation.navigatePopUpWindow(Routes.ADDBOOK);
     }
 
 

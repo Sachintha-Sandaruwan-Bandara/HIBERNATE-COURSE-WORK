@@ -91,6 +91,9 @@ public class Navigation {
             case ADDUSER:
                 initPopUp("popUpAddUser");
                 break;
+            case ADDBOOK:
+                initPopUp("popUpAddBook");
+                break;
 
 
         }
