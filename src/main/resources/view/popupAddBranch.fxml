@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.PopupAddBranchController">
+   <children>
+      <Label layoutX="235.0" layoutY="36.0" text="ADD BRANCH">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLocation" layoutX="188.0" layoutY="172.0" prefHeight="26.0" prefWidth="281.0" />
+      <Label layoutX="98.0" layoutY="169.0" prefHeight="30.0" prefWidth="82.0" text="LOCATION :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="276.0" layoutY="322.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: yellowgreen;" text="save" />
+      <JFXButton layoutX="520.0" layoutY="24.0" onAction="#btnCloseOnAction" prefHeight="39.0" prefWidth="31.0" styleClass="popup-button" text=" " textFill="#aeaeae">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-close-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../../../../../First%20Semester/OOP-%5BObject-Oriented%20Programming%5D/FINAL%20PROJECT/COMPUTER-SHOP/src/main/resources/css/Style.css" />
+            <URL value="@../style/styles.css" />
+         </stylesheets>
+      </JFXButton>
+      <TextField fx:id="txtName" layoutX="187.0" layoutY="214.0" prefHeight="26.0" prefWidth="281.0" />
+      <Label layoutX="125.0" layoutY="211.0" prefHeight="30.0" prefWidth="54.0" text="NAME :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+   <effect>
+      <InnerShadow height="70.13" radius="32.225" width="60.77" />
+   </effect>
+</AnchorPane>

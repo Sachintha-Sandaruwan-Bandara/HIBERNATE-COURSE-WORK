@@ -14,6 +14,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.LibraryBranchDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Navigation;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Routes;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.LibraryBranchService;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.impl.LibraryBranchServiceImpl;
 
@@ -106,8 +108,8 @@ public class AdminBranchesController {
     }
 
     @FXML
-    void btnAddBranchOnAction(ActionEvent event) {
-
+    void btnAddBranchOnAction(ActionEvent event) throws IOException {
+        Navigation.navigatePopUpWindow(Routes.ADDBRANCH);
     }
 
 
