@@ -21,4 +21,6 @@ public interface UserService extends SuperService{
 
     List<UserDTO> getAllUsers();
     UserAuthDTO authenticate(String username, String password);
+
+    List<UserDTO>getOverDueUsers();
 }

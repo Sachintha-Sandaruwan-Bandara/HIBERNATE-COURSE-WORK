@@ -7,5 +7,8 @@ package lk.ijse.HIBERNATE_COURSE_WORK.repository;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.Admin;
 import lk.ijse.HIBERNATE_COURSE_WORK.entity.User;
 
+import java.util.List;
+
 public interface UserRepository extends CrudRepository<User,Long>{
+    List<User>getOverDueUsers();
 }

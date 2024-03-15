@@ -48,32 +48,35 @@ public class LoginPageController {
         String username = txtUserName.getText();
         String password = txtPassword.getText();
 
+        // Validate username and password using regex
+        if (!username.matches("^[a-zA-Z]{3,20}$")) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid username format. Please enter a valid username (3-20 alphabetic characters).");
+            return;
+        }
+
+        if (!password.matches("^[0-9]{4}$")) {
+            showAlert(Alert.AlertType.ERROR, "Error", "Invalid password format. Please enter a valid password (4 digits).");
+            return;
+        }
 
         UserAuthDTO userAuthDTO = userService.authenticate(username, password);
         AdminAuthDTO adminAuthDTO = adminService.authenticate(username, password);
 
-        System.out.println(adminAuthDTO.getId());
-        System.out.println(userAuthDTO.getId());
-
         if (userAuthDTO.isFlag()) {
             System.out.println("User logged in");
-            userId=userAuthDTO.getId();
-            System.out.println(userId);
-            Navigation.navigate(Routes.USERLOGIN,anchorpane);
-
+            userId = userAuthDTO.getId();
+            Navigation.navigate(Routes.USERLOGIN, anchorpane);
         } else {
-            System.out.println("this is not user");
+            System.out.println("This is not a user");
         }
 
         if (adminAuthDTO.isFlag()) {
             System.out.println("Admin logged in");
-            adminId=adminAuthDTO.getId();
-            System.out.println(adminId);
-            Navigation.navigate(Routes.ADMINLOGIN,anchorpane);
+            adminId = adminAuthDTO.getId();
+            Navigation.navigate(Routes.ADMINLOGIN, anchorpane);
         } else {
-            System.out.println("this is not admin");
+            System.out.println("This is not an admin");
         }
-
     }
 
     @FXML

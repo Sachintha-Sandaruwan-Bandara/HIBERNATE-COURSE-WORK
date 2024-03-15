@@ -44,6 +44,8 @@ public class AdminUsersController {
     }
     public void getAllUsers(){
         userDTOList=userService.getAllUsers();
+
+
     }
 
     @FXML

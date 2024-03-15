@@ -133,4 +133,18 @@ public class UserServiceImpl implements UserService {
         return userAuthDTO;
     }
 
+    @Override
+    public List<UserDTO> getOverDueUsers() {
+        session = SessionFactoryConfig.getInstance()
+                .getSession();
+        userRepository.setSession(session);
+        List<User> overDueUsers = userRepository.getOverDueUsers();
+        List<UserDTO> userDTOList = new ArrayList<>();
+        for (User user : overDueUsers) {
+            userDTOList.add(user.toDTO());
+        }
+        return userDTOList;
+    }
+
+
 }

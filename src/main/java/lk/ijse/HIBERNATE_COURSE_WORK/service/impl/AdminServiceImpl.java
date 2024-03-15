@@ -78,6 +78,7 @@ public class AdminServiceImpl implements AdminService {
         try {
             adminRepository.setSession(session);
             adminRepository.update(adminDTO.toEntity());
+            transaction.commit();
             session.close();
             return true;
         } catch (Exception ex) {

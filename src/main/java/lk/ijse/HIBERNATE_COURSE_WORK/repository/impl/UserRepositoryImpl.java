@@ -58,5 +58,21 @@ public class UserRepositoryImpl implements UserRepository {
     }
 
 
+    @Override
+    public List<User> getOverDueUsers() {
+
+        try {
+            Query query = session.createQuery(
+                    "SELECT DISTINCT t.user " +
+                            "FROM Transaction t " +
+                            "WHERE t.returnDate IS NULL " +
+                            "AND t.dueDate < CURRENT_DATE"
+            );
+            List<User> overdueUsers = query.list();
+            return overdueUsers;
+        } finally {
+            session.close();
+        }
+    }
 }
 
