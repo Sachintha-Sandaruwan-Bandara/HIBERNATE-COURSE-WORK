@@ -5,9 +5,13 @@ package lk.ijse.HIBERNATE_COURSE_WORK.navigation;
 */
 
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -67,7 +71,10 @@ public class Navigation {
                 initUI("adminAccount.fxml");
                 window.setTitle("admin account");
                 break;
-
+            case CREATEACCOUNT:
+                initUI("adminCreateAccount.fxml");
+                window.setTitle("admin create account");
+                break;
 
             default:
                 new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();
@@ -79,30 +86,32 @@ public class Navigation {
     }
 
 
-//    public static void navigatePopUpWindow(Routes route) throws IOException {
-//        switch (route) {
-//            case ADDCUSTOMER:
-//                initPopUp("popUpAddCustomerForm");
-//                break;
-//
-//
-//
-//    }
-//
-//    private static void initPopUp(String url) throws IOException {
-//
-//        Parent root = FXMLLoader.load(Navigation.class.getResource("/view/" + url+".fxml"));
-//        Scene scene = new Scene(root);
-//        Stage stage = new Stage();
-//        stage.initModality(Modality.APPLICATION_MODAL);
-//        stage.initStyle(StageStyle.UNDECORATED);
-//        stage.setScene(scene);
-//        stage.setAlwaysOnTop(true);
-//
-//        stage.setTitle("");
-//        //  stage.show();
-//        stage.showAndWait();
-//
-//
-//    }
+    public static void navigatePopUpWindow(Routes route) throws IOException {
+        switch (route) {
+            case ADDUSER:
+                initPopUp("popUpAddUser");
+                break;
+
+
+        }
+
+
+    }
+
+    private static void initPopUp(String url) throws IOException {
+
+        Parent root = FXMLLoader.load(Navigation.class.getResource("/view/" + url + ".fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setScene(scene);
+        stage.setAlwaysOnTop(true);
+
+        stage.setTitle("");
+        //  stage.show();
+        stage.showAndWait();
+
+
+    }
 }

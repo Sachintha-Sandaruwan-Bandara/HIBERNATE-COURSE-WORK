@@ -5,6 +5,7 @@ package lk.ijse.HIBERNATE_COURSE_WORK.controller;
 */
 
 import com.jfoenix.controls.JFXButton;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -31,7 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserBooksController {
-
+    @FXML
+    private TextField txtSearchBox;
     long userId;
     @FXML
     private AnchorPane anchorPane;
@@ -49,6 +52,8 @@ public class UserBooksController {
     private UserService userService;
     private TransactionService transactionService;
     private List<BookDTO> allBooks;
+
+    private List<BookDTO> searchResult;
 
     public void initialize() throws IOException {
         bookService = BookServiceImpl.getInstance();
@@ -230,6 +235,61 @@ public class UserBooksController {
         vbox.getChildren().add(vBox1);
         vbox.setSpacing(20);
 
+    }
+
+
+    @FXML
+    void btnSearchOnAction(ActionEvent event) throws IOException {
+        String search = txtSearchBox.getText().toLowerCase();
+        if (!search.equals(null) && !search.isEmpty()) {
+
+            List<BookDTO> searchResult = new ArrayList<>();
+
+            for (BookDTO book : allBooks) {
+                if (book.getTitle().toLowerCase().contains(search) ||
+                        book.getAuthor().toLowerCase().contains(search) ||
+                        book.getGener().toLowerCase().contains(search)) {
+                    searchResult.add(book);
+                }
+            }
+
+            loadSearch(searchResult);
+        }
+    }
+
+    private void loadSearch(List<BookDTO>searchResult) throws IOException {
+        vbox1.getChildren().clear();
+        vbox2.getChildren().clear();
+        vbox3.getChildren().clear();
+        vbox4.getChildren().clear();
+
+        for (int i = 0; i < searchResult.size(); i++) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/bookCard.fxml"));
+
+            BookCardController bookCardController = new BookCardController();
+
+            fxmlLoader.setController(bookCardController);
+
+            Node node = fxmlLoader.load();
+            bookCardController.setId(searchResult.get(i).getId());
+            bookCardController.setLblTitle(searchResult.get(i).getTitle());
+            bookCardController.setLblAuthor(searchResult.get(i).getAuthor());
+            bookCardController.setLblGener(searchResult.get(i).getGener());
+            bookCardController.setLblQty(searchResult.get(i).getQty());
+
+            if (i % 4 == 0) {
+                setVBoxAndAction(vbox1, node, bookCardController);
+
+            } else if (i % 4 == 1) {
+                setVBoxAndAction(vbox2, node, bookCardController);
+            } else if (i % 4 == 2) {
+                setVBoxAndAction(vbox3, node, bookCardController);
+            } else if (i % 4 == 3) {
+                setVBoxAndAction(vbox4, node, bookCardController);
+            }
+
+            Long bookId = searchResult.get(i).getId();
+        }
     }
 
 }

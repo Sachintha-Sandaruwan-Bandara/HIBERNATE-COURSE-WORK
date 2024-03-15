@@ -13,3 +13,12 @@
     -fx-background-color: rgba(128, 128, 128, 0);
 
 }
+.popup-button:hover {
+    -fx-background-color: #ff1600;
+}
+
+.popup-button {
+    -fx-background-color: rgba(147, 144, 144, 0.6);
+
+
+}

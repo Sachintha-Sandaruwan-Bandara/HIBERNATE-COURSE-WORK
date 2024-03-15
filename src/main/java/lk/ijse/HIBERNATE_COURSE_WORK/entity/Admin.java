@@ -30,6 +30,8 @@ public class Admin {
     private String username;
     private String password;
 
+    private String email;
+
 
     @OneToMany(mappedBy = "admin")
     private List<Book> books;
@@ -45,6 +47,7 @@ public class Admin {
         adminDTO.setId(this.id);
         adminDTO.setUsername(this.username);
         adminDTO.setPassword(this.password);
+        adminDTO.setEmail(this.email);
 //        if (this.books!=null) {
 //            List<BookDTO> bookDTOS = new ArrayList<>();
 //            for (Book book : this.books) {

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="467.0" prefWidth="501.0" style="-fx-background-radius: 15px; -fx-border-radius: 15px;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.PopupAddUserController">
+   <children>
+      <Label layoutX="192.0" layoutY="24.0" text="ADD USER">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="132.0" layoutY="174.0" prefHeight="26.0" prefWidth="281.0" />
+      <TextField fx:id="txtEmail" layoutX="131.0" layoutY="224.0" prefHeight="26.0" prefWidth="282.0" />
+      <Label layoutX="37.0" layoutY="171.0" prefHeight="30.0" prefWidth="86.0" text="User Name :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="69.0" layoutY="219.0" prefHeight="30.0" prefWidth="54.0" text="E-Mail :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="51.0" layoutY="266.0" prefHeight="30.0" prefWidth="78.0" text="Password :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPassword" layoutX="132.0" layoutY="268.0" prefHeight="26.0" prefWidth="282.0" />
+      <JFXButton layoutX="220.0" layoutY="353.0" onAction="#btnSaveOnAction" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: yellowgreen;" text="save" />
+      <JFXButton layoutX="424.0" layoutY="15.0" onAction="#btnCloseOnAction" prefHeight="39.0" prefWidth="31.0" styleClass="popup-button" text=" " textFill="#aeaeae">
+         <graphic>
+            <ImageView fitHeight="22.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-close-50.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <stylesheets>
+            <URL value="@../../../../../First%20Semester/OOP-%5BObject-Oriented%20Programming%5D/FINAL%20PROJECT/COMPUTER-SHOP/src/main/resources/css/Style.css" />
+            <URL value="@../style/styles.css" />
+         </stylesheets>
+      </JFXButton>
+   </children>
+   <effect>
+      <InnerShadow height="58.43" radius="32.225" width="72.47" />
+   </effect>
+</AnchorPane>

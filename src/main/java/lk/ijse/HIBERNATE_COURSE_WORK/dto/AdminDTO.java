@@ -22,6 +22,8 @@ public class AdminDTO {
     private Long id;
     private String username;
     private String password;
+
+    private String email;
     private List<BookDTO> books;
     private List<LibraryBranchDTO> libraryBranches;
     private List<UserDTO> users;
@@ -31,6 +33,7 @@ public class AdminDTO {
         admin.setId(this.getId());
         admin.setUsername(this.getUsername());
         admin.setPassword(this.getPassword());
+        admin.setEmail(this.getEmail());
 
 //        dto lists convert to entity lists
         if (this.books !=null) {

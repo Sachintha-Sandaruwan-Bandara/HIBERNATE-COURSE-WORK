@@ -77,8 +77,10 @@ public class LoginPageController {
     }
 
     @FXML
-    void createAccountOnMouseClicked(MouseEvent event) {
+    void createAccountOnMouseClicked(MouseEvent event) throws IOException {
         // Implement create account action
+
+        Navigation.navigate(Routes.CREATEACCOUNT,anchorpane);
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {

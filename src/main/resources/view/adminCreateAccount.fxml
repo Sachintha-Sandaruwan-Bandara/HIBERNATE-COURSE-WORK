@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="anchorPane" prefHeight="670.0" prefWidth="1250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.AdminCreateAccountController">
+   <children>
+      <TextField fx:id="txtUserName" layoutX="448.0" layoutY="188.0" prefHeight="26.0" prefWidth="281.0" />
+      <TextField fx:id="txtEmail" layoutX="447.0" layoutY="238.0" prefHeight="26.0" prefWidth="282.0" />
+      <Label layoutX="479.0" layoutY="90.0" prefHeight="30.0" prefWidth="190.0" text="Create an account">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="185.0" prefHeight="30.0" prefWidth="86.0" text="User Name :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="385.0" layoutY="233.0" prefHeight="30.0" prefWidth="54.0" text="E-Mail :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="367.0" layoutY="280.0" prefHeight="30.0" prefWidth="78.0" text="Password :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="405.0" layoutY="401.0" prefHeight="30.0" prefWidth="42.0" text="Otp :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPassword" layoutX="448.0" layoutY="282.0" prefHeight="26.0" prefWidth="282.0" />
+      <TextField fx:id="txtOtp" layoutX="447.0" layoutY="403.0" prefHeight="26.0" prefWidth="282.0" />
+      <Label layoutX="306.0" layoutY="319.0" prefHeight="30.0" prefWidth="139.0" text="Re-Enter Password :">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtRePassword" layoutX="448.0" layoutY="322.0" prefHeight="26.0" prefWidth="282.0" />
+      <JFXButton layoutX="451.0" layoutY="363.0" onAction="#btnGetOtpOnAction" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: yellowgreen;" text="Get Otp" />
+      <JFXButton layoutX="513.0" layoutY="476.0" onAction="#btnVerifyOtpOnAction" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: yellowgreen;" text="Verify Otp" />
+      <JFXButton layoutX="600.0" layoutY="363.0" onAction="#btnReSendOtpOnAction" prefHeight="26.0" prefWidth="130.0" style="-fx-background-color: yellowgreen;" text="Re-Send-Otp" />
+      <Label fx:id="txtOtpIncorrect" layoutX="518.0" layoutY="430.0" prefHeight="30.0" prefWidth="139.0" text="Otp Is Incorrect" textFill="#ff0101">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

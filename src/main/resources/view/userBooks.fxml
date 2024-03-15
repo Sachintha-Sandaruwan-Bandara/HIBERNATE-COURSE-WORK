@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane prefHeight="660.0" prefWidth="1000.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.HIBERNATE_COURSE_WORK.controller.UserBooksController">
    <children>
@@ -19,5 +20,7 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <TextField fx:id="txtSearchBox" layoutX="704.0" layoutY="48.0" />
+      <JFXButton layoutX="872.0" layoutY="48.0" onAction="#btnSearchOnAction" style="-fx-background-color: yellowgreen;" text="search" />
    </children>
 </AnchorPane>

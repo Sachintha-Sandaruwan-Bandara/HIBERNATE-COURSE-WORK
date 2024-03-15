@@ -13,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.BookDTO;
 import lk.ijse.HIBERNATE_COURSE_WORK.dto.UserDTO;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Navigation;
+import lk.ijse.HIBERNATE_COURSE_WORK.navigation.Routes;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.UserService;
 import lk.ijse.HIBERNATE_COURSE_WORK.service.impl.UserServiceImpl;
 
@@ -45,8 +47,8 @@ public class AdminUsersController {
     }
 
     @FXML
-    void btnAddUserOnAction(ActionEvent event) {
-
+    void btnAddUserOnAction(ActionEvent event) throws IOException {
+        Navigation.navigatePopUpWindow(Routes.ADDUSER);
     }
     private void loadAllRows() throws IOException {
         //refresh view(clear old records before added new records)
